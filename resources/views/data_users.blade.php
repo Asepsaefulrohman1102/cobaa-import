@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
     <title>Data Users</title>
 </head>
 <body>
@@ -25,89 +29,56 @@
                 <div class="card-header">
                     DATA USERS
                 </div>
+
+
                 <div class="card-body">
                     <div class="button-action" style="margin-bottom: 20px">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#import">
-                            IMPORT
-                        </button>
-                        <a href="" class="btn btn-primary btn-md">EXPORT</a>
+
+                        {{-- DELETE --}}
+                        <!-- resources/views/users/index.blade.php atau halaman lainnya -->
+
+                        <form action="{{ route('users.deleteAll') }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#import">
+                                IMPORT
+                            </button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus semua data user?')">Delete All Users</button>
+                            <a href="/users/pc-count" class="btn btn-info">Info Pelanggaran</a>
+                        </form>
                     </div>
+
+
                     <div class="table-responsive">
                         <table class="table table-bordered" id="table">
                             <thead>
                             <tr>
                                 <th scope="col">NAMA LENGKAP</th>
-                                <th scope="col">21</th>
-                                <th scope="col">22</th>
-                                <th scope="col">23</th>
-                                <th scope="col">24</th>
-                                <th scope="col">25</th>
-                                <th scope="col">26</th>
-                                <th scope="col">27</th>
-                                <th scope="col">28</th>
-                                <th scope="col">29</th>
-                                <th scope="col">30</th>
-                                <th scope="col">31</th>
-                                <th scope="col">1</th>
-                                <th scope="col">2</th>
-                                <th scope="col">3</th>
-                                <th scope="col">4</th>
-                                <th scope="col">5</th>
-                                <th scope="col">6</th>
-                                <th scope="col">7</th>
-                                <th scope="col">8</th>
-                                <th scope="col">9</th>
-                                <th scope="col">10</th>
-                                <th scope="col">11</th>
-                                <th scope="col">12</th>
-                                <th scope="col">13</th>
-                                <th scope="col">14</th>
-                                <th scope="col">15</th>
-                                <th scope="col">16</th>
-                                <th scope="col">17</th>
-                                <th scope="col">18</th>
-                                <th scope="col">19</th>
-                                <th scope="col">20</th>
+                                <th scope="col">Total PC</th>
+                                <th scope="col">Total DTI</th>
+                                <th scope="col">Total A</th>
+                                <th scope="col">Total DT</th>
+                                <th scope="col">Total PCI</th>
+                                <th scope="col">Total DTPC</th>
+                                <th scope="col">Total DTIPC</th>
+                                <th scope="col">Total DTPCI</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($users as $user)
+                                @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user->name }}</td>
-                                    <td>{{ $user->tgl_21 }}</td>
-                                    <td>{{ $user->tgl_22 }}</td>
-                                    <td>{{ $user->tgl_23 }}</td>
-                                    <td>{{ $user->tgl_24 }}</td>
-                                    <td>{{ $user->tgl_25 }}</td>
-                                    <td>{{ $user->tgl_26 }}</td>
-                                    <td>{{ $user->tgl_27 }}</td>
-                                    <td>{{ $user->tgl_28 }}</td>
-                                    <td>{{ $user->tgl_29 }}</td>
-                                    <td>{{ $user->tgl_30 }}</td>
-                                    <td>{{ $user->tgl_31 }}</td>
-                                    <td>{{ $user->tgl_1 }}</td>
-                                    <td>{{ $user->tgl_2 }}</td>
-                                    <td>{{ $user->tgl_3 }}</td>
-                                    <td>{{ $user->tgl_4 }}</td>
-                                    <td>{{ $user->tgl_5 }}</td>
-                                    <td>{{ $user->tgl_6 }}</td>
-                                    <td>{{ $user->tgl_7 }}</td>
-                                    <td>{{ $user->tgl_8 }}</td>
-                                    <td>{{ $user->tgl_9 }}</td>
-                                    <td>{{ $user->tgl_10 }}</td>
-                                    <td>{{ $user->tgl_11 }}</td>
-                                    <td>{{ $user->tgl_12 }}</td>
-                                    <td>{{ $user->tgl_13 }}</td>
-                                    <td>{{ $user->tgl_14 }}</td>
-                                    <td>{{ $user->tgl_15 }}</td>
-                                    <td>{{ $user->tgl_16 }}</td>
-                                    <td>{{ $user->tgl_17 }}</td>
-                                    <td>{{ $user->tgl_18 }}</td>
-                                    <td>{{ $user->tgl_19 }}</td>
-                                    <td>{{ $user->tgl_20 }}</td>
-
+                                    <td>{{ $user->total_PC_count ?: '-' }}</td>
+                                    <td>{{ $user->total_DTI_count ?: '-' }}</td>
+                                    <td>{{ $user->total_A_count ?: '-' }}</td>
+                                    <td>{{ $user->total_DT_count ?: '-' }}</td>
+                                    <td>{{ $user->total_PCI_count ?: '-' }}</td>
+                                    <td>{{ $user->total_DTPC_count ?: '-' }}</td>
+                                    <td>{{ $user->total_DTIPC_count ?: '-' }}</td>
+                                    <td>{{ $user->total_DTPCI_count ?: '-' }}</td>
                                 </tr>
                             @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -116,16 +87,48 @@
         </div>
     </div>
 </div>
-@if(isset($countsByCategory))
-    @foreach($countsByCategory as $category => $counts)
-        <p>{{ $category }}:</p>
-        @foreach(range(21, 31) as $day)
-            <p>Jumlah untuk tgl_{{ $day }}: {{ $counts["tgl_{$day}"] }}</p>
-        @endforeach
-    @endforeach
+
+<!-- your_view.blade.php -->
+
+
+<!-- your_view.blade.php -->
+
+{{-- @if(isset($users) && count($users) > 0)
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Total PC Count</th>
+                <th>Total DT Count</th>
+                <th>Total A Count</th>
+                <th>Total DTPCI Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($users as $row)
+                <tr>
+                    <td>{{ $row->name }}</td>
+
+                    @php
+                        $totalPC = $row->PC_count_tgl_21 + $row->PC_count_tgl_22 + $row->PC_count_tgl_31;
+                        $totalDT = $row->DT_count_tgl_21 + $row->DT_count_tgl_22 + $row->DT_count_tgl_31;
+                        $totalA = $row->A_count_tgl_21 + $row->A_count_tgl_22 + $row->A_count_tgl_31;
+                        $totalDTPCI = $row->DTPCI_count_tgl_21 + $row->DTPCI_count_tgl_22 + $row->DTPCI_count_tgl_31;
+                    @endphp
+
+                    <td>{{ $totalPC > 0 ? $totalPC : '-' }}</td>
+                    <td>{{ $totalDT > 0 ? $totalDT : '-' }}</td>
+                    <td>{{ $totalA > 0 ? $totalA : '-' }}</td>
+                    <td>{{ $totalDTPCI > 0 ? $totalDTPCI : '-' }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 @else
-    <p>Data tidak tersedia.</p>
+    <p>No results found.</p>
 @endif
+
+ --}}
 
 <!-- modal -->
 <div class="modal fade" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
