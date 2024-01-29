@@ -1238,7 +1238,7 @@ class UsersController extends Controller
             ->groupBy('name')
             ->get();
 
-        return view('data_users', compact('users'));
+        return view('page.pegawai.index', compact('users'));
     }
 
     public function import(Request $request)
@@ -1263,19 +1263,12 @@ class UsersController extends Controller
 
         if($import) {
             //redirect
-            return redirect()->route('users.index')->with(['success' => 'Data Berhasil Diimport!']);
+            return redirect()->route('page.pegawai.index')->with(['success' => 'Data Berhasil Diimport!']);
         } else {
             //redirect
-            return redirect()->route('users.index')->with(['error' => 'Data Gagal Diimport!']);
+            return redirect()->route('page.pegawai.index')->with(['error' => 'Data Gagal Diimport!']);
         }
     }
-
-
-    // public function getUsersWithPCCount()
-    // {
-
-    // }
-
 
 
     public function getUsersWithPCCount()
@@ -2503,7 +2496,7 @@ class UsersController extends Controller
 
             ->get();
 
-        return view('users.index', compact('users'));
+        return view('page.pegawai.hitung', compact('users'));
     }
 
 
@@ -2511,7 +2504,7 @@ class UsersController extends Controller
     {
         User::truncate(); // Menghapus semua data pada tabel User
 
-        return redirect()->route('users.index')->with('success', 'Semua data user berhasil dihapus.');
+        return redirect()->route('page.pegawai.index')->with('success', 'Semua data user berhasil dihapus.');
     }
 
 

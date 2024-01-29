@@ -90,9 +90,6 @@
 
 <!-- your_view.blade.php -->
 
-
-<!-- your_view.blade.php -->
-
 {{-- @if(isset($users) && count($users) > 0)
     <table>
         <thead>

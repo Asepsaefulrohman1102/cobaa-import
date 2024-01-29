@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\UsersImport;
 use Excel;
 use Illuminate\Http\Request;
 use App\Imports\YourImportClass;
@@ -19,7 +20,7 @@ class ExcelImportController extends Controller
         $file = $request->file('file');
 
         // Process the Excel file
-        Excel::import(new YourImportClass, $file);
+        Excel::import(new UsersImport, $file);
 
         return redirect()->back()->with('success', 'Excel file imported successfully!');
     }
