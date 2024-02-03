@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataFileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ViolationController;
@@ -20,20 +21,20 @@ use App\Http\Controllers\PelanggaranController;
 //     return view('welcome');
 // });
 
-Route::get('/users',[UsersController::class, 'index'])->name('page.pegawai.index');
-Route::post('/users/import',[UsersController::class, 'import'])->name('users.import');
+Route::get('/users',[DataFileController::class, 'index'])->name('page.pegawai.index');
+Route::post('/users/import',[DataFileController::class, 'import'])->name('users.import');
 
 // Route::get('/violations/count', [ViolationController::class, 'countViolations'])->name('violations.count');
 
-Route::get('/users/pc-count', [UsersController::class, 'getUsersWithPCCount']);
+Route::get('/users/pc-count', [DataFileController::class, 'getUsersWithPCCount']);
 
 // routes/web.php
 
-Route::delete('/users', [UsersController::class, 'deleteAllUsers'])->name('users.deleteAll');
+Route::delete('/users', [DataFileController::class, 'deleteAllUsers'])->name('users.deleteAll');
 
 Route::get('/', [PelanggaranController::class, 'hitungpelanggaran']);
 
-Route::get('/hitung', [UsersController::class, 'getUsersWithPCCount']);
+Route::get('/hitung', [DataFileController::class, 'getUsersWithPCCount']);
 
 
 

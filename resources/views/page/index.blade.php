@@ -30,7 +30,7 @@
                                         <i class="bi bi-house-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        @foreach($users as $user)
+                                        @foreach($pelanggaran as $user)
                                             <h3 class="fw-bold text-center">{{ $user->total_PC_count_all }}</h3>
                                         @endforeach
                                     </div>
@@ -52,7 +52,7 @@
                                         <i class="bi bi-house-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        @foreach($users as $user)
+                                        @foreach($pelanggaran as $user)
                                             <h3 class="fw-bold text-center">{{ $user->total_PCI_count_all }}</h3>
                                         @endforeach
                                     </div>
@@ -75,7 +75,7 @@
                                         <i class="bi bi-house-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        @foreach($users as $user)
+                                        @foreach($pelanggaran as $user)
                                             <h3 class="fw-bold text-center">{{ $user->total_DT_count_all }}</h3>
                                         @endforeach
                                     </div>
@@ -97,7 +97,7 @@
                                         <i class="bi bi-house-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        @foreach($users as $user)
+                                        @foreach($pelanggaran as $user)
                                             <h3 class="fw-bold text-center">{{ $user->total_A_count_all }}</h3>
                                         @endforeach
                                     </div>
@@ -119,7 +119,7 @@
                                         <i class="bi bi-house-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        @foreach($users as $user)
+                                        @foreach($pelanggaran as $user)
                                             <h3 class="fw-bold text-center">{{ $user->total_DTI_count_all }}</h3>
                                         @endforeach
                                     </div>
@@ -141,7 +141,7 @@
                                         <i class="bi bi-house-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        @foreach($users as $user)
+                                        @foreach($pelanggaran as $user)
                                             <h3 class="fw-bold text-center">{{ $user->total_DTPC_count_all }}</h3>
                                         @endforeach
                                     </div>
@@ -163,7 +163,7 @@
                                         <i class="bi bi-house-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        @foreach($users as $user)
+                                        @foreach($pelanggaran as $user)
                                             <h3 class="fw-bold text-center">{{ $user->total_DTIPC_count_all }}</h3>
                                         @endforeach
                                     </div>
@@ -185,7 +185,7 @@
                                         <i class="bi bi-house-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        @foreach($users as $user)
+                                        @foreach($pelanggaran as $user)
                                             <h3 class="fw-bold text-center">{{ $user->total_DTPCI_count_all }}</h3>
                                         @endforeach
                                     </div>

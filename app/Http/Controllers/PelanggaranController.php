@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use file;
 use App\Models\User;
+use App\Models\Data_File;
+use Illuminate\Http\Request;
 
 class PelanggaranController extends Controller
 {
     public function index()
     {
-        $users = User::selectRaw('SUM(
+        $pelanggaran = Data_File::selectRaw('SUM(
             CASE
                 WHEN tgl_21 = "PC" THEN 1
                 ELSE 0
@@ -160,158 +162,7 @@ class PelanggaranController extends Controller
                 ELSE 0
             END
         ) AS total_PC_count_all')
-        ->selectRaw('SUM(
-            CASE
-                WHEN tgl_21 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_22 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_23 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_24 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_25 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_26 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_27 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_28 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_29 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_30 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_1 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_2 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_3 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_4 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_5 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_6 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_7 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_8 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_9 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_10 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_11 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_12 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_13 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_14 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_15 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_16 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_17 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_18 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_19 = "DTI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_20 = "DTI" THEN 1
-                ELSE 0
-            END
 
-            ) AS total_DTI_count_all')
             ->selectRaw('SUM(
                 CASE
                     WHEN tgl_21 = "DT" THEN 1
@@ -616,160 +467,6 @@ class PelanggaranController extends Controller
                 ELSE 0
             END
         ) AS total_A_count_all')
-
-
-        // PCI
-        ->selectRaw('SUM(
-            CASE
-                WHEN tgl_21 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_22 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_23 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_24 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_25 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_26 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_27 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_28 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_29 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_30 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_1 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_2 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_3 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_4 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_5 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_6 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_7 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_8 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_9 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_10 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_11 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_12 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_13 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_14 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_15 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_16 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_17 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_18 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_19 = "PCI" THEN 1
-                ELSE 0
-            END
-            +
-            CASE
-                WHEN tgl_20 = "PCI" THEN 1
-                ELSE 0
-            END
-        ) AS total_PCI_count_all')
 
         // DTPC
         ->selectRaw('SUM(
@@ -1231,12 +928,12 @@ class PelanggaranController extends Controller
         ) AS total_DTPCI_count_all')
 
         ->get();
-        return view('page.pegawai.hitung', compact('users'));
+        return view('page.pegawai.hitung', compact('pelanggaran'));
     }
 
     public function hitungpelanggaran()
     {
-        $users = User::selectRaw('SUM(
+        $pelanggaran = Data_File::selectRaw('SUM(
             CASE
                 WHEN tgl_21 = "PC" THEN 1
                 ELSE 0
@@ -2458,6 +2155,6 @@ class PelanggaranController extends Controller
         ) AS total_DTPCI_count_all')
 
         ->get();
-        return view('page.index', compact('users'));
+        return view('page.index', compact('pelanggaran'));
     }
 }

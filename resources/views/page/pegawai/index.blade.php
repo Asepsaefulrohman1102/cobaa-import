@@ -44,24 +44,23 @@
                   <tr>
                     <th>Nama Lengkap</th>
                     <th class="text-center">Total PC</th>
-                    <th class="text-center">Total DTI</th>
                     <th>Total A</th>
                     <th>Total DT</th>
-                    <th>Total PCI</th>
                     <th>Total DTPC</th>
                     <th>Total DTIPC</th>
                     <th>Total DTPCI</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user)
+                    @foreach ($data_files as $user)
                         <tr>
                             <td>{{ $user->name }}</td>
+                            {{-- @php
+                                            dd($user);
+                                        @endphp --}}
                             <td>{{ $user->total_PC_count ?: '-' }}</td>
-                            <td>{{ $user->total_DTI_count ?: '-' }}</td>
                             <td>{{ $user->total_A_count ?: '-' }}</td>
                             <td>{{ $user->total_DT_count ?: '-' }}</td>
-                            <td>{{ $user->total_PCI_count ?: '-' }}</td>
                             <td>{{ $user->total_DTPC_count ?: '-' }}</td>
                             <td>{{ $user->total_DTIPC_count ?: '-' }}</td>
                             <td>{{ $user->total_DTPCI_count ?: '-' }}</td>
