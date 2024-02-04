@@ -35,7 +35,7 @@
                         IMPORT
                     </button>
                     <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus semua data user?')">Delete</button>
-                    <a href="/hitung" class="btn btn-info">Info Pelanggaran</a>
+                    <a href="/hitung-pelanggaran" class="btn btn-info">Info Pelanggaran</a>
                 </form>
             </div>
               <!-- Table with stripped rows -->

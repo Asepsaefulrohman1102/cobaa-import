@@ -22,15 +22,20 @@
                 </a>
             </li>
             <li>
-                <a href="/users">
+                <a href="/data_pegawai">
                 <i class="bi bi-circle" ></i><span>Daftar Pegawai</span>
                 </a>
             </li>
             <li>
-                <a href="/hitung">
+                <a href="/pelanggaran">
                 <i class="bi bi-circle" ></i><span>Daftar Pelanggaran</span>
                 </a>
             </li>
+            {{-- <li>
+                <a href="/hitung">
+                <i class="bi bi-circle" ></i><span>Daftar </span>
+                </a>
+            </li> --}}
             </ul>
         </li><!-- End Pegawai Nav -->
 

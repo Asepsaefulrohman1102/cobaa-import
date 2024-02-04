@@ -16,6 +16,7 @@ class CreateDataFilesTable extends Migration
         Schema::create('data__files', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            // $table->string('nama_pegawai')->references('nama_pegawai')->on('pegawais')->onDelete('cascade');
             $table->string('tgl_21')->nullable();
             $table->string('tgl_22')->nullable();
             $table->string('tgl_23')->nullable();
