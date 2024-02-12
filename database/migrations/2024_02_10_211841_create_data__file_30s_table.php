@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDataFilesTable extends Migration
+class CreateDataFile30sTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDataFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('data__files', function (Blueprint $table) {
+        Schema::create('data__file_30s', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             // $table->string('nama_pegawai')->references('nama_pegawai')->on('pegawais')->onDelete('cascade');
@@ -27,7 +27,6 @@ class CreateDataFilesTable extends Migration
             $table->string('tgl_28');
             $table->string('tgl_29');
             $table->string('tgl_30');
-            $table->string('tgl_31');
             $table->string('tgl_1');
             $table->string('tgl_2');
             $table->string('tgl_3');
@@ -59,6 +58,6 @@ class CreateDataFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data__files');
+        Schema::dropIfExists('data__file_30s');
     }
 }
