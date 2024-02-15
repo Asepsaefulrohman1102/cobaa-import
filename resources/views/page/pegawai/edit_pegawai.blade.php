@@ -28,10 +28,21 @@
                                 <form action="/data_pegawai/update-pegawai" method="post">
                                 @csrf
                                     <div class="form-group">
+                                        <label for="nip">NIP</label>
+                                        <input type="text" class="form-control" id="nip" name="nip" value="{{ $p->nip }}" required>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="nama_pegawai">Nama Pegawai</label>
                                         <input type="text" class="form-control" id="nama_pegawai" name="nama_pegawai" value="{{ $p->nama_pegawai }}" required>
-
                                         <input type="hidden" class="form-control" id="id" name="id" value="{{ $p->id }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="golongan">Golongan</label>
+                                        <input type="text" class="form-control" id="golongan" name="golongan" value="{{ $p->golongan }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="jabatan">Jabatan</label>
+                                        <input type="text" class="form-control" id="jabatan" name="jabatan" value="{{ $p->jabatan }}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nomor_wa">Nomor WhatsApp</label>

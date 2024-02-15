@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\DataFileImport_28;
+use App\Imports\DataFileImport_30;
+use App\Models\Data_File_28;
+use App\Models\Data_File_30;
 use DB;
 use view;
 use App\Models\Data_File;
@@ -63,6 +67,11 @@ class DataFileController extends Controller
                 +
                 CASE
                     WHEN tgl_30 = "PC" THEN 1
+                    ELSE 0
+                END
+                +
+                CASE
+                    WHEN tgl_31 = "PC" THEN 1
                     ELSE 0
                 END
                 +
@@ -215,6 +224,11 @@ class DataFileController extends Controller
                 +
                 CASE
                     WHEN tgl_30 = "DT" THEN 1
+                    ELSE 0
+                END
+                +
+                CASE
+                    WHEN tgl_31 = "DT" THEN 1
                     ELSE 0
                 END
                 +
@@ -373,6 +387,11 @@ class DataFileController extends Controller
                 END
                 +
                 CASE
+                    WHEN tgl_31 = "A" THEN 1
+                    ELSE 0
+                END
+                +
+                CASE
                     WHEN tgl_1 = "A" THEN 1
                     ELSE 0
                 END
@@ -523,6 +542,11 @@ class DataFileController extends Controller
                 +
                 CASE
                     WHEN tgl_30 = "DTPC" THEN 1
+                    ELSE 0
+                END
+                +
+                CASE
+                    WHEN tgl_31 = "DTPC" THEN 1
                     ELSE 0
                 END
                 +
@@ -680,6 +704,11 @@ class DataFileController extends Controller
                 END
                 +
                 CASE
+                    WHEN tgl_31 = "DTIPC" THEN 1
+                    ELSE 0
+                END
+                +
+                CASE
                     WHEN tgl_1 = "DTIPC" THEN 1
                     ELSE 0
                 END
@@ -833,6 +862,11 @@ class DataFileController extends Controller
                 END
                 +
                 CASE
+                    WHEN tgl_31 = "DTPCI" THEN 1
+                    ELSE 0
+                END
+                +
+                CASE
                     WHEN tgl_1 = "DTPCI" THEN 1
                     ELSE 0
                 END
@@ -936,7 +970,7 @@ class DataFileController extends Controller
             ->groupBy('name')
             ->get();
 
-        return view('page.pegawai.index', compact('data_files'));
+        return view('page.pelanggaran.index', compact('data_files'));
     }
 
     public function import(Request $request)
@@ -961,10 +995,68 @@ class DataFileController extends Controller
 
         if($import) {
             //redirect
-            return redirect()->route('page.pegawai.index')->with(['success' => 'Data Berhasil Diimport!']);
+            return redirect()->route('page.pelanggaran.info-pelanggaran')->with(['success' => 'Data Berhasil Diimport!']);
         } else {
             //redirect
-            return redirect()->route('page.pegawai.index')->with(['error' => 'Data Gagal Diimport!']);
+            return redirect()->route('page.pelanggaran.info-pelanggaran')->with(['error' => 'Data Gagal Diimport!']);
+        }
+    }
+
+    public function import_30(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = $file->hashName();
+
+        //temporary file
+        $path = $file->storeAs('public/excel/',$nama_file);
+
+        // import data
+        $import = Excel::import(new DataFileImport_30(), storage_path('app/public/excel/'.$nama_file));
+
+        //remove from server
+        Storage::delete($path);
+
+        if($import) {
+            //redirect
+            return redirect()->route('page.pelanggaran.info-pelanggaran')->with(['success' => 'Data Berhasil Diimport!']);
+        } else {
+            //redirect
+            return redirect()->route('page.pelanggaran.info-pelanggaran')->with(['error' => 'Data Gagal Diimport!']);
+        }
+    }
+
+    public function import_28(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = $file->hashName();
+
+        //temporary file
+        $path = $file->storeAs('public/excel/',$nama_file);
+
+        // import data
+        $import = Excel::import(new DataFileImport_28(), storage_path('app/public/excel/'.$nama_file));
+
+        //remove from server
+        Storage::delete($path);
+
+        if($import) {
+            //redirect
+            return redirect()->route('page.pelanggaran.info-pelanggaran')->with(['success' => 'Data Berhasil Diimport!']);
+        } else {
+            //redirect
+            return redirect()->route('page.pelanggaran.info-pelanggaran')->with(['error' => 'Data Gagal Diimport!']);
         }
     }
 
@@ -2198,10 +2290,33 @@ class DataFileController extends Controller
     }
 
 
+    public function deleteAllData()
+    {
+        Data_File::truncate(); // Menghapus semua data pada tabel User
+        Data_File_30::truncate(); // Menghapus semua data pada tabel User
+        Data_File_28::truncate(); // Menghapus semua data pada tabel User
+
+        return redirect()->route('page.pelanggaran.info-pelanggaran')->with('success', 'Semua data user berhasil dihapus.');
+    }
+
     public function deleteAllUsers()
     {
         Data_File::truncate(); // Menghapus semua data pada tabel User
 
-        return redirect()->route('page.pegawai.index')->with('success', 'Semua data user berhasil dihapus.');
+        return redirect()->route('page.pelanggaran.info-pelanggaran')->with('success', 'Semua data user berhasil dihapus.');
+    }
+
+    public function deleteAllUsers30()
+    {
+        Data_File_30::truncate(); // Menghapus semua data pada tabel User
+
+        return redirect()->route('page.pelanggaran.info-pelanggaran')->with('success', 'Semua data user berhasil dihapus.');
+    }
+
+    public function deleteAllUsers28()
+    {
+        Data_File_28::truncate(); // Menghapus semua data pada tabel User
+
+        return redirect()->route('page.pelanggaran.info-pelanggaran')->with('success', 'Semua data user berhasil dihapus.');
     }
 }

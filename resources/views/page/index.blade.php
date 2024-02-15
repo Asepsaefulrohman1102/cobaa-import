@@ -16,11 +16,34 @@
 
     <section class="section dashboard">
         <div class="row">
+            {{-- periode tanggal --}}
+            {{-- <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title
+                        ">Periode Tanggal</h5>
+                        <form action="/dashboard" method="GET">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" name="start_date" value="">
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" name="end_date" value="">
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn btn-primary">Filter</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> --}}
+
         <!-- Left side columns -->
             <div class="col-lg-12">
                 <div class="row">
                     <!-- PC Card -->
-                    <div class="col-xxl-4 col-md-6">
+                    <div class="col-xxl-4 col-md-4">
                         <div class="card info-card pc-card">
                             <div class="card-body">
                                 <h4 class="card-title text-center">Pulang Cepat</h4>
@@ -36,36 +59,13 @@
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" type="button">Kirim Peringatan</button>
+                                    <a href="/pelanggaran/pc-pelanggaran" class="btn btn-success" >Detail</a>
                                 </div>
                             </div>
                         </div><!-- End Sales Card -->
                     </div><!-- End Revenue Card -->
 
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card pc-card">
-                            <div class="card-body">
-                                <h4 class="card-title text-center">Pulang Cepat Izin</h4>
-
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-house-fill"></i>
-                                    </div>
-                                    <div class="ps-3">
-                                        @foreach($pelanggaran as $user)
-                                            <h3 class="fw-bold text-center">{{ $user->total_PCI_count_all }}</h3>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" type="button">Kirim Peringatan</button>
-                                </div>
-                            </div>
-                        </div><!-- End Sales Card -->
-                    </div><!-- End Revenue Card -->
-
-
-                    <div class="col-xxl-4 col-md-6">
+                    <div class="col-xxl-4 col-md-4">
                         <div class="card info-card pc-card">
                             <div class="card-body">
                                 <h4 class="card-title text-center">Alfa</h4>
@@ -81,13 +81,13 @@
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" type="button">Kirim Peringatan</button>
+                                    <a href="/pelanggaran/alfa-pelanggaran" class="btn btn-success" >Detail</a>
                                 </div>
                             </div>
                         </div><!-- End Sales Card -->
                     </div><!-- End Revenue Card -->
 
-                    <div class="col-xxl-4 col-md-6">
+                    <div class="col-xxl-4 col-md-4">
                         <div class="card info-card pc-card">
                             <div class="card-body">
                                 <h4 class="card-title text-center">Datang Terlambat</h4>
@@ -103,35 +103,13 @@
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" type="button">Kirim Peringatan</button>
+                                    <a href="/pelanggaran/dt-pelanggaran" class="btn btn-success" >Detail</a>
                                 </div>
                             </div>
                         </div><!-- End Sales Card -->
                     </div><!-- End Revenue Card -->
 
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card pc-card">
-                            <div class="card-body">
-                                <h4 class="card-title text-center">Datang Terlambat Izin</h4>
-
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-house-fill"></i>
-                                    </div>
-                                    <div class="ps-3">
-                                        @foreach($pelanggaran as $user)
-                                            <h3 class="fw-bold text-center">{{ $user->total_DTI_count_all }}</h3>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" type="button">Kirim Peringatan</button>
-                                </div>
-                            </div>
-                        </div><!-- End Sales Card -->
-                    </div><!-- End Revenue Card -->
-
-                    <div class="col-xxl-4 col-md-6">
+                    <div class="col-xxl-4 col-md-4">
                         <div class="card info-card pc-card">
                             <div class="card-body">
                                 <h4 class="card-title text-center">DTPC</h4>
@@ -147,13 +125,13 @@
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" type="button">Kirim Peringatan</button>
+                                    <a href="/pelanggaran/dtpc-pelanggaran" class="btn btn-success" >Detail</a>
                                 </div>
                             </div>
                         </div><!-- End Sales Card -->
                     </div><!-- End Revenue Card -->
 
-                    <div class="col-xxl-4 col-md-6">
+                    <div class="col-xxl-4 col-md-4">
                         <div class="card info-card pc-card">
                             <div class="card-body">
                                 <h4 class="card-title text-center">DTIPC</h4>
@@ -169,13 +147,13 @@
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" type="button">Kirim Peringatan</button>
+                                    <a href="/pelanggaran/dtipc-pelanggaran" class="btn btn-success" >Detail</a>
                                 </div>
                             </div>
                         </div><!-- End Sales Card -->
                     </div><!-- End Revenue Card -->
 
-                    <div class="col-xxl-4 col-md-6">
+                    <div class="col-xxl-4 col-md-4">
                         <div class="card info-card pc-card">
                             <div class="card-body">
                                 <h4 class="card-title text-center">DTPCI</h4>
@@ -191,18 +169,11 @@
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" type="button">Kirim Peringatan</button>
+                                    <a href="/pelanggaran/dtpci-pelanggaran" class="btn btn-success" >Detail</a>
                                 </div>
                             </div>
                         </div><!-- End Sales Card -->
                     </div><!-- End Revenue Card -->
-
-
-
-
-
-
-
                 </div>
             </div>
         </div>

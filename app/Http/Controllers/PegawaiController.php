@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\DataPegawai;
+use App\Models\Data_File;
 use App\Models\Pegawai;
 use App\Imports\UsersImport;
 use App\Models\User;
@@ -2241,11 +2243,14 @@ class PegawaiController extends Controller
     {
     	// insert data ke table pegawai
     	DB::table('pegawais')->insert([
+            'nip' => $request->nip,
     		'nama_pegawai' => $request->nama_pegawai,
+            'golongan' => $request->golongan,
+            'jabatan' => $request->jabatan,
     		'nomor_wa' => $request->nomor_wa,
     	]);
     	// alihkan halaman ke halaman pegawai
-    	return redirect('/data_pegawai');
+    	return redirect('/pegawai/data_pegawai');
     }
 
     public function edit($id)
@@ -2260,19 +2265,66 @@ class PegawaiController extends Controller
     {
     	// update data pegawai
     	DB::table('pegawais')->where('id',$request->id)->update([
+            'nip' => $request->nip,
     		'nama_pegawai' => $request->nama_pegawai,
+            'golongan' => $request->golongan,
+            'jabatan' => $request->jabatan,
     		'nomor_wa' => $request->nomor_wa,
     	]);
     	// alihkan halaman ke halaman pegawai
     	return redirect('/data_pegawai');
     }
 
-    public function hapus($id)
+    public function hapus($nama_pegawai)
     {
     	// menghapus data pegawai berdasarkan id yang dipilih
-    	DB::table('pegawais')->where('id',$id)->delete();
+    	DB::table('pegawais')->where('nama_pegawai',$nama_pegawai)->delete();
 
     	// alihkan halaman ke halaman pegawai
-    	return redirect('/data_pegawai');
+    	return redirect('/pegawai/data_pegawai');
     }
+
+    public function import(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = $file->hashName();
+
+        //temporary file
+        $path = $file->storeAs('public/excel/',$nama_file);
+
+        // import data
+        $import = Excel::import(new DataPegawai(), storage_path('app/public/excel/'.$nama_file));
+
+        //remove from server
+        Storage::delete($path);
+
+        if($import) {
+            //redirect
+            return redirect()->route('page.pegawai.data_pegawai')->with(['success' => 'Data Berhasil Diimport!']);
+        } else {
+            //redirect
+            return redirect()->route('page.pegawai.data_pegawai')->with(['error' => 'Data Gagal Diimport!']);
+        }
+    }
+
+    public function deleteAllPegawai()
+    {
+        Pegawai::truncate(); // Menghapus semua data pada tabel User
+
+        return redirect()->route('page.pegawai.data_pegawai')->with('success', 'Semua data user berhasil dihapus.');
+    }
+
+    public function detailPegawai($nama_pegawai)
+    {
+        $pegawai = Pegawai::where('nama_pegawai', $nama_pegawai);
+        return view('page.pegawai.detail_pegawai', compact('pegawai'));
+    }
+
+
 }

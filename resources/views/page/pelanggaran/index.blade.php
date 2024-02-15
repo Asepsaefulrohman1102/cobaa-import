@@ -24,20 +24,20 @@
               <h5 class="card-title">Pegawai</h5>
               <p>Halaman daftar pegawai beserta keterangan pelanggaran</p>
               <div class="button-action" style="margin-bottom: 20px">
+                    {{-- DELETE --}}
+                    <!-- resources/views/users/index.blade.php atau halaman lainnya -->
 
-                {{-- DELETE --}}
-                <!-- resources/views/users/index.blade.php atau halaman lainnya -->
+                    <form action="{{ route('pelanggaran.deleteAll') }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#import">
+                            IMPORT
+                        </button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus semua data user?')">Delete</button>
+                        <a href="/hitung-pelanggaran" class="btn btn-info">Info Pelanggaran</a>
+                    </form>
+                </div>
 
-                <form action="{{ route('users.deleteAll') }}" method="post">
-                    @csrf
-                    @method('delete')
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#import">
-                        IMPORT
-                    </button>
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus semua data user?')">Delete</button>
-                    <a href="/hitung-pelanggaran" class="btn btn-info">Info Pelanggaran</a>
-                </form>
-            </div>
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
@@ -76,6 +76,10 @@
         </div>
       </div>
     </section>
+
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#import">
+        IMPORT
+    </button>
 
     <div class="modal fade" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

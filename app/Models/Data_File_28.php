@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Pegawai;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Data_File extends Model
+class Data_File_28 extends Model
 {
     use HasFactory, Notifiable;
 
@@ -17,5 +16,4 @@ class Data_File extends Model
      * @var array
      */
     protected $guarded= [];
-
 }
